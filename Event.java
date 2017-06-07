@@ -54,4 +54,3 @@ public class Event {
 		return END_OF_DAY;
 	}
 }
-

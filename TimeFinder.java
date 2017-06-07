@@ -33,13 +33,10 @@ public class TimeFinder {
 		Date today = getToday();
     	Path csvFile = Paths.get("calendar.csv");
 
-        int currentCol = 1;
         LocalTime startTime = null;
         LocalTime endTime = null;
         Date day  = null;
-
         String[] parts = null;
-
 
         try (BufferedReader br = Files.newBufferedReader(csvFile, StandardCharsets.US_ASCII)) { 	
 			String line = br.readLine();
@@ -59,7 +56,6 @@ public class TimeFinder {
 								week.get(day).get(i).update(startTime, endTime);
 								found = true;
 							} else if (currentEvents.get(i).getEndTime().isAfter(endTime)) {
-						
 								insertIdx = i;
 								break;
 							} else {
@@ -79,7 +75,6 @@ public class TimeFinder {
 		} catch (IOException ioe) {
             ioe.printStackTrace();
         }
-
          findLongestFreeTime(week);
     }
 
